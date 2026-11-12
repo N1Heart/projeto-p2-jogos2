@@ -1,11 +1,19 @@
 extends CharacterBody2D
 # Movimento: roteiro da Aula 08 (Prof. Ezefferth), parte 3.5.
-# Animacoes do cavaleiro e ataque: Aula 09, feito com ajuda de IA (Claude).
+# Animacoes do cavaleiro, ataque, vida e dano: Aula 09, feito com ajuda de IA (Claude).
+
+signal vida_mudou(vida: int)
+signal morreu
 
 @export var velocidade: float = 70.0
 @export var alcance_do_golpe: float = 14.0
+@export var vida_maxima: int = 5
+@export var tempo_invencivel: float = 1.0  # depois de levar dano, fica um tempo sem levar outro
 
+var vida: int
 var atacando := false
+var invencivel := false
+var morto := false
 var olhando := Vector2.RIGHT  # para onde o golpe vai: direita, esquerda, cima ou baixo
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
@@ -13,6 +21,7 @@ var olhando := Vector2.RIGHT  # para onde o golpe vai: direita, esquerda, cima o
 
 
 func _ready() -> void:
+	vida = vida_maxima
 	add_to_group("jogador")
 	anim.animation_finished.connect(_on_animacao_terminou)
 	anim.frame_changed.connect(_on_quadro_mudou)
@@ -20,6 +29,8 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
+	if morto:
+		return
 	if Input.is_action_just_pressed("attack") and not atacando:
 		_atacar()
 
@@ -36,6 +47,8 @@ func _physics_process(_delta: float) -> void:
 
 	if atacando:
 		return
+	if anim.animation == "hurt" and anim.is_playing():
+		return  # deixa a animacao de dor terminar
 	if direcao == Vector2.ZERO:
 		anim.play("idle")
 	else:
@@ -66,3 +79,23 @@ func _on_quadro_mudou() -> void:
 func _on_animacao_terminou() -> void:
 	if anim.animation == "hit":
 		atacando = false
+
+
+# chamada pelo ladrao quando encosta no jogador
+func receber_dano(quanto: int) -> void:
+	if invencivel or morto:
+		return
+	vida = max(vida - quanto, 0)
+	vida_mudou.emit(vida)
+	atacando = false
+	anim.play("hurt")
+	if vida == 0:
+		morto = true
+		morreu.emit()
+		return
+	invencivel = true
+	var pisca := create_tween().set_loops(5)
+	pisca.tween_property(anim, "modulate:a", 0.3, tempo_invencivel / 10.0)
+	pisca.tween_property(anim, "modulate:a", 1.0, tempo_invencivel / 10.0)
+	await get_tree().create_timer(tempo_invencivel).timeout
+	invencivel = false
