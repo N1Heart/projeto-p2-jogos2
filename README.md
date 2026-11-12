@@ -13,9 +13,14 @@ Jogo do projeto de Jogos Digitais II (2º bimestre 2026/2) — Matheus De Farias
 ## Como jogar
 
 - Setas ou WASD: andar nas quatro direções.
+- Espaço ou J: golpe de lança na direção em que o cavaleiro está olhando.
+- Fique dentro da zona amarela para somar tempo. Com 60 segundos você vence. A zona muda de lugar a cada 15 segundos e a seta amarela aponta para ela.
+- Os ladrões tiram 1 de vida quando encostam. Você tem 5. Se a vida acabar, você perde.
+- R: jogar de novo depois da vitória ou da derrota.
 
 ## Créditos
 
 - Tileset: Tiny Town, de Kenney -- https://kenney.nl/assets/tiny-town -- licença CC0
-- Personagem: Prof. Ezefferth, para a Aula 08 de Jogos Digitais II
+- Personagem da Aula 08: Prof. Ezefferth, para a Aula 08 de Jogos Digitais II
+- Cavaleiro (`sprites/knight-Sheet_whitefx.png`): 64x64 2D Dark Fantasy Pixel Knight, de Maxime Nourry -- https://maxime-nourry.itch.io/64x64-pixel-knight -- a página não informa a licença
 - Ladrões (`sprites/ladroes/`): Light Bandit e Heavy Bandit -- autor, link e licença: PREENCHER antes da Aula 11
