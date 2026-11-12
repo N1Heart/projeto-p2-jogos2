@@ -1,6 +1,89 @@
 [gd_scene format=3 uid="uid://dyjt3xj5ka7py"]
 
 [ext_resource type="Script" uid="uid://bsgrik8yjlebm" path="res://scripts/ladrao.gd" id="1_2oial"]
+[ext_resource type="Texture2D" uid="uid://cipwosnjxmoi4" path="res://sprites/ladroes/light-bandit/Death/LightBandit_Death_0.png" id="2_rnra5"]
+[ext_resource type="Texture2D" uid="uid://do3do6cqfa6i6" path="res://sprites/ladroes/light-bandit/Hurt/LightBandit_Hurt_0.png" id="3_4eqgd"]
+[ext_resource type="Texture2D" uid="uid://cnindrj1bi4xv" path="res://sprites/ladroes/light-bandit/Hurt/LightBandit_Hurt_1.png" id="4_he4bm"]
+[ext_resource type="Texture2D" uid="uid://yusewludxkw4" path="res://sprites/ladroes/light-bandit/Combat Idle/LightBandit_Combat Idle_0.png" id="5_v42ch"]
+[ext_resource type="Texture2D" uid="uid://dvo7rnmkjcmny" path="res://sprites/ladroes/light-bandit/Combat Idle/LightBandit_Combat Idle_1.png" id="6_8kule"]
+[ext_resource type="Texture2D" uid="uid://icp3tvsacaac" path="res://sprites/ladroes/light-bandit/Combat Idle/LightBandit_Combat Idle_2.png" id="7_o04rb"]
+[ext_resource type="Texture2D" uid="uid://dl2jhxuxhaalo" path="res://sprites/ladroes/light-bandit/Combat Idle/LightBandit_Combat Idle_3.png" id="8_mx5wo"]
+[ext_resource type="Texture2D" uid="uid://druuclv6x7nnf" path="res://sprites/ladroes/light-bandit/Run/LightBandit_Run_0.png" id="9_wi5bc"]
+[ext_resource type="Texture2D" uid="uid://cemnjptjpr866" path="res://sprites/ladroes/light-bandit/Run/LightBandit_Run_1.png" id="10_gfxug"]
+[ext_resource type="Texture2D" uid="uid://7awgikscebu2" path="res://sprites/ladroes/light-bandit/Run/LightBandit_Run_2.png" id="11_7cpne"]
+[ext_resource type="Texture2D" uid="uid://csicrdg7kjptq" path="res://sprites/ladroes/light-bandit/Run/LightBandit_Run_3.png" id="12_8f5dq"]
+[ext_resource type="Texture2D" uid="uid://4nc0p5vlc81m" path="res://sprites/ladroes/light-bandit/Run/LightBandit_Run_4.png" id="13_ank0v"]
+[ext_resource type="Texture2D" uid="uid://coog5or3umpbj" path="res://sprites/ladroes/light-bandit/Run/LightBandit_Run_5.png" id="14_b3fft"]
+[ext_resource type="Texture2D" uid="uid://civieeqoswxcn" path="res://sprites/ladroes/light-bandit/Run/LightBandit_Run_6.png" id="15_cmehf"]
+[ext_resource type="Texture2D" uid="uid://0bqsb0qp0pqt" path="res://sprites/ladroes/light-bandit/Run/LightBandit_Run_7.png" id="16_whwdp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j4beu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_rnra5")
+}],
+"loop": 0,
+"name": &"death",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_4eqgd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_he4bm")
+}],
+"loop": 0,
+"name": &"hurt",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_v42ch")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8kule")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_o04rb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_mx5wo")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_wi5bc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_gfxug")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_7cpne")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_8f5dq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ank0v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_b3fft")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_cmehf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_whwdp")
+}],
+"loop": 1,
+"name": &"run",
+"speed": 10.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6i4ha"]
 size = Vector2(10, 6)
@@ -12,14 +95,12 @@ motion_mode = 1
 script = ExtResource("1_2oial")
 velocidade = 50.0
 
-[node name="Corpo" type="ColorRect" parent="." unique_id=1571424306]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1632268890]
 z_index = 1
-offset_left = -5.0
-offset_top = -8.0
-offset_right = 5.0
-offset_bottom = 6.0
-mouse_filter = 2
-color = Color(0.6, 0.18, 0.15, 1)
+position = Vector2(0, -5)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_j4beu")
+animation = &"run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1520168435]
 position = Vector2(0, 3)

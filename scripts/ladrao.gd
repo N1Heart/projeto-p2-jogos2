@@ -4,6 +4,7 @@ extends CharacterBody2D
 #   PERSEGUINDO: viu o jogador perto e corre atras dele.
 #   ATORDOADO: levou um golpe, e empurrado para tras e fica um instante sem agir.
 # O caminho vem do NavigationAgent2D, que usa a malha da Navegacao e contorna casas e arvores.
+# Arte dos bandidos e morte animada: Aula 11.
 
 enum Estado { INDO_PARA_A_ZONA, PERSEGUINDO, ATORDOADO }
 
@@ -23,6 +24,7 @@ var jogador: Node2D
 var zona: Node2D
 
 @onready var agente: NavigationAgent2D = $NavigationAgent2D
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 
 func _ready() -> void:
@@ -41,6 +43,18 @@ func _physics_process(delta: float) -> void:
 		Estado.ATORDOADO:
 			_atordoado(delta)
 	move_and_slide()
+	_animar()
+
+
+func _animar() -> void:
+	if estado == Estado.ATORDOADO:
+		sprite.play("hurt")
+		return
+	if velocity.length() > 1.0:
+		sprite.play("run")
+		sprite.flip_h = velocity.x > 0  # o desenho do bandido olha para a esquerda
+	else:
+		sprite.play("idle")
 
 
 func _mudar_para(novo: Estado) -> void:
@@ -92,7 +106,19 @@ func _distancia_do_jogador() -> float:
 func levar_golpe(de_onde: Vector2) -> void:
 	vida -= 1
 	if vida <= 0:
-		queue_free()
+		_morrer()
 		return
 	empurrao = de_onde * 120.0
 	_mudar_para(Estado.ATORDOADO)
+	sprite.modulate = Color(1, 0.4, 0.4)  # pisca vermelho
+	create_tween().tween_property(sprite, "modulate", Color.WHITE, 0.3)
+
+
+func _morrer() -> void:
+	remove_from_group("ladroes")  # ja nao conta na horda nem leva outro golpe
+	set_physics_process(false)
+	$CollisionShape2D.set_deferred("disabled", true)
+	sprite.play("death")
+	var some := create_tween()
+	some.tween_property(sprite, "modulate:a", 0.0, 0.6)
+	some.tween_callback(queue_free)
