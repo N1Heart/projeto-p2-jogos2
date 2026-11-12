@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cbw5aa7r0bdhl"]
+
+[ext_resource type="Script" uid="uid://d1yl3yy6pw561" path="res://scripts/zona.gd" id="1_0a3km"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tku3y"]
+size = Vector2(48, 48)
+
+[node name="Zona" type="Area2D" unique_id=1328376597]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_0a3km")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1190602690]
+shape = SubResource("RectangleShape2D_tku3y")
+
+[node name="Visual" type="Node2D" parent="." unique_id=1226793299]
+
+[node name="Fundo" type="ColorRect" parent="Visual" unique_id=2039132684]
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+mouse_filter = 2
+color = Color(1, 0.82, 0.2, 0.3)
+
+[node name="Borda" type="Line2D" parent="Visual" unique_id=631420212]
+points = PackedVector2Array(-24, -24, 24, -24, 24, 24, -24, 24)
+closed = true
+width = 2.0
+default_color = Color(1, 0.85, 0.25, 0.9)
