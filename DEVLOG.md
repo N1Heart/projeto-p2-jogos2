@@ -17,3 +17,9 @@ Como resolvi: (escreva aqui como resolveu)
 O que fiz: o ladrão ganhou uma máquina de estados com três estados: indo para a zona, perseguindo e atordoado. Ele anda pela malha de navegação (NavigationRegion2D gerada da colisão da camada objetos, com NavigationAgent2D), então contorna as casas, as árvores e a cerca da horta. Agora são dois ladrões: o leve, com 1 de vida, e o pesado, com 2. Os dois nascem em pontos sorteados junto ao muro.
 O que travou: (escreva aqui o que travou para você)
 Como resolvi: (escreva aqui como resolveu)
+
+## Aula 11 -- 04/11 (feita em 10/11)
+
+O que fiz: troquei os retângulos pelos bandidos do pacote Bandits. O leve usa o Light Bandit e o pesado usa o Heavy Bandit, com animações de correr, parado, dor e morte. Como os bandidos são desenhados de lado, eles só viram para a esquerda e para a direita. A horda aperta com o tempo: o intervalo entre um ladrão e outro começa em 3 s e cai até 0,8 s, com até 25 ladrões ao mesmo tempo. Testei com a horda cheia e o jogo não travou.
+O que travou: (escreva aqui o que travou para você)
+Como resolvi: (escreva aqui como resolveu)

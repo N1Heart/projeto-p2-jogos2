@@ -1,12 +1,14 @@
 extends Node2D
 # Regras do Territorio: vence ao somar 60 s dentro da zona, perde quando a vida acaba.
-# Aula 09, feito com ajuda de IA (Claude).
+# Aula 09, feito com ajuda de IA (Claude). Horda que aperta com o tempo: Aula 11.
 
 @export var meta: float = 60.0
 @export var cena_leve: PackedScene
 @export var cena_pesado: PackedScene
 @export var chance_de_pesado: float = 0.3
-@export var maximo_de_ladroes: int = 8
+@export var maximo_de_ladroes: int = 25
+@export var intervalo_inicial: float = 3.0   # segundos entre um ladrao e outro no comeco
+@export var intervalo_minimo: float = 0.8    # o mais rapido que a horda chega
 
 var tempo_na_zona := 0.0
 var acabou := false
@@ -21,6 +23,7 @@ var acabou := false
 func _ready() -> void:
 	jogador.vida_mudou.connect(hud.mostrar_vida)
 	jogador.morreu.connect(_on_jogador_morreu)
+	nascer.wait_time = intervalo_inicial
 	nascer.timeout.connect(_nascer_ladrao)
 	hud.mostrar_vida(jogador.vida)
 	hud.mostrar_tempo(0, meta)
@@ -49,6 +52,8 @@ func _apontar_seta() -> void:
 func _nascer_ladrao() -> void:
 	if get_tree().get_nodes_in_group("ladroes").size() >= maximo_de_ladroes:
 		return
+	# cada ladrao que nasce deixa o proximo vir um pouco mais cedo
+	nascer.wait_time = max(intervalo_minimo, nascer.wait_time * 0.95)
 	var cena := cena_leve
 	if randf() < chance_de_pesado:
 		cena = cena_pesado
