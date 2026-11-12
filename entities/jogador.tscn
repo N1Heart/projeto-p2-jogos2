@@ -120,9 +120,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ntdb4")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"hit",
-"speed": 8.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -137,9 +137,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8c0iw")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"hurt",
-"speed": 8.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -197,20 +197,32 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_raifr"]
 size = Vector2(10, 6)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m0gj8"]
+size = Vector2(20, 18)
+
 [node name="Jogador" type="CharacterBody2D" unique_id=632618339]
-scale = Vector2(0.5, 0.5)
+collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_m0gj8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1508540230]
 z_index = 1
+position = Vector2(0, -6)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_dk2l0")
-animation = &"hit"
-frame_progress = 0.49467283
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1779188989]
 position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_raifr")
+
+[node name="Golpe" type="Area2D" parent="." unique_id=1140921672]
+position = Vector2(14, 0)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Golpe" unique_id=410217026]
+shape = SubResource("RectangleShape2D_m0gj8")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=614251325]
 zoom = Vector2(3, 3)

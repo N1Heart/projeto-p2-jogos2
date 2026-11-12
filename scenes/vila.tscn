@@ -1,7 +1,7 @@
-[gd_scene format=4]
+[gd_scene format=4 uid="uid://defqpv1rtrglj"]
 
-[ext_resource type="TileSet" path="res://tiles/vila.tres" id="1_s03bs"]
-[ext_resource type="PackedScene" path="res://entities/jogador.tscn" id="2_22uim"]
+[ext_resource type="TileSet" uid="uid://dxsapkajqskqo" path="res://tiles/vila.tres" id="1_s03bs"]
+[ext_resource type="PackedScene" uid="uid://jtmcqbxt7nnu" path="res://entities/jogador.tscn" id="2_22uim"]
 
 [node name="Vila" type="Node2D" unique_id=1461868816]
 
