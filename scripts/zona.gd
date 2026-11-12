@@ -17,6 +17,7 @@ var restante: float
 
 
 func _ready() -> void:
+	add_to_group("zona")  # os ladroes procuram a zona por este grupo
 	position = pontos[0]
 	restante = intervalo
 

@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://o54q5fb48yip"]
+
+[ext_resource type="Script" uid="uid://bsgrik8yjlebm" path="res://scripts/ladrao.gd" id="1_1e4fr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ix7e"]
+size = Vector2(10, 6)
+
+[node name="LadraoPesado" type="CharacterBody2D" unique_id=94376720]
+collision_layer = 4
+collision_mask = 5
+motion_mode = 1
+script = ExtResource("1_1e4fr")
+velocidade = 32.0
+vida = 2
+
+[node name="Corpo" type="ColorRect" parent="." unique_id=1730214602]
+z_index = 1
+offset_left = -7.0
+offset_top = -12.0
+offset_right = 7.0
+offset_bottom = 6.0
+mouse_filter = 2
+color = Color(0.3, 0.15, 0.35, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1418311010]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_1ix7e")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=217587372]
+path_desired_distance = 4.0
+target_desired_distance = 6.0
+radius = 6.0

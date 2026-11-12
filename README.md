@@ -15,7 +15,8 @@ Jogo do projeto de Jogos Digitais II (2º bimestre 2026/2) — Matheus De Farias
 - Setas ou WASD: andar nas quatro direções.
 - Espaço ou J: golpe de lança na direção em que o cavaleiro está olhando.
 - Fique dentro da zona amarela para somar tempo. Com 60 segundos você vence. A zona muda de lugar a cada 15 segundos e a seta amarela aponta para ela.
-- Os ladrões tiram 1 de vida quando encostam. Você tem 5. Se a vida acabar, você perde.
+- Os ladrões entram por qualquer ponto do muro e vão para a zona. Se você chegar perto, eles correm atrás de você. Encostar tira 1 de vida. Você tem 5, e se a vida acabar você perde.
+- O ladrão leve cai com 1 golpe. O pesado é mais lento e aguenta 2.
 - R: jogar de novo depois da vitória ou da derrota.
 
 ## Créditos

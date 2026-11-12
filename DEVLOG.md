@@ -11,3 +11,9 @@ Como resolvi: fiz o git clone do repositório, passei o projeto para dentro da p
 O que fiz: troquei o personagem pelo cavaleiro, com animações de parado, correndo, golpe e dor. Coloquei vida (5), dano com um tempo de invencível, o golpe com uma Area2D na frente do cavaleiro, a zona do Território que muda de lugar a cada 15 s, o contador de 60 s, a vitória, a derrota e o R para recomeçar. Os ladrões ainda são retângulos que andam reto até o jogador.
 O que travou: (escreva aqui o que travou para você)
 Como resolvi: (escreva aqui como resolveu)
+
+## Aula 10 -- 28/10 (feita em 10/11)
+
+O que fiz: o ladrão ganhou uma máquina de estados com três estados: indo para a zona, perseguindo e atordoado. Ele anda pela malha de navegação (NavigationRegion2D gerada da colisão da camada objetos, com NavigationAgent2D), então contorna as casas, as árvores e a cerca da horta. Agora são dois ladrões: o leve, com 1 de vida, e o pesado, com 2. Os dois nascem em pontos sorteados junto ao muro.
+O que travou: (escreva aqui o que travou para você)
+Como resolvi: (escreva aqui como resolveu)

@@ -3,13 +3,13 @@ extends Node2D
 # Aula 09, feito com ajuda de IA (Claude).
 
 @export var meta: float = 60.0
-@export var cena_ladrao: PackedScene
+@export var cena_leve: PackedScene
+@export var cena_pesado: PackedScene
+@export var chance_de_pesado: float = 0.3
 @export var maximo_de_ladroes: int = 8
 
 var tempo_na_zona := 0.0
 var acabou := false
-# por enquanto os ladroes entram pelas quatro pontas da rua
-var entradas: Array[Vector2] = [Vector2(312, 24), Vector2(312, 360), Vector2(24, 200), Vector2(616, 200)]
 
 @onready var jogador: CharacterBody2D = $Jogador
 @onready var zona: Area2D = $Zona
@@ -49,9 +49,28 @@ func _apontar_seta() -> void:
 func _nascer_ladrao() -> void:
 	if get_tree().get_nodes_in_group("ladroes").size() >= maximo_de_ladroes:
 		return
-	var ladrao: Node2D = cena_ladrao.instantiate()
-	ladrao.position = entradas.pick_random()
+	var cena := cena_leve
+	if randf() < chance_de_pesado:
+		cena = cena_pesado
+	var ladrao: Node2D = cena.instantiate()
+	ladrao.position = _ponto_na_borda()
 	add_child(ladrao)
+
+
+# um ponto qualquer junto ao muro, longe do jogador e dentro da malha de navegacao
+func _ponto_na_borda() -> Vector2:
+	var mapa := get_world_2d().navigation_map
+	var ponto := Vector2.ZERO
+	for tentativa in 10:
+		match randi() % 4:
+			0: ponto = Vector2(randf_range(24, 616), 24)    # muro de cima
+			1: ponto = Vector2(randf_range(24, 616), 360)   # muro de baixo
+			2: ponto = Vector2(24, randf_range(24, 360))    # muro da esquerda
+			3: ponto = Vector2(616, randf_range(24, 360))   # muro da direita
+		ponto = NavigationServer2D.map_get_closest_point(mapa, ponto)
+		if ponto.distance_to(jogador.global_position) > 120.0:
+			break
+	return ponto
 
 
 func _on_jogador_morreu() -> void:
