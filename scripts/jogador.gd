@@ -1,6 +1,5 @@
 extends CharacterBody2D
-# Movimento: roteiro da Aula 08 (Prof. Ezefferth), parte 3.5.
-# Animacoes do cavaleiro, ataque, vida e dano: Aula 09, feito com ajuda de IA (Claude).
+# Animacoes do cavaleiro, ataque, vida e dano
 
 signal vida_mudou(vida: int)
 signal morreu
@@ -14,7 +13,7 @@ var vida: int
 var atacando := false
 var invencivel := false
 var morto := false
-var olhando := Vector2.RIGHT  # para onde o golpe vai: direita, esquerda, cima ou baixo
+var olhando := Vector2.RIGHT  # para onde o golpe vai: direita, esquerda
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var golpe: Area2D = $Golpe

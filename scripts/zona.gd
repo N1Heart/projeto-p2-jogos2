@@ -7,8 +7,8 @@ signal mudou_de_lugar
 @export var intervalo: float = 15.0  # segundos ate mudar de lugar
 # pontos livres da vila (sem casa, arvore nem cerca), achados com uma consulta de fisica
 @export var pontos: Array[Vector2] = [
-	Vector2(312, 200), Vector2(592, 120), Vector2(48, 184), Vector2(144, 336),
-	Vector2(472, 240), Vector2(264, 48), Vector2(360, 336), Vector2(400, 104),
+	Vector2(312, 200), Vector2(592, 208), Vector2(48, 184), Vector2(144, 336),
+	Vector2(264, 48), Vector2(448, 184), Vector2(304, 336), Vector2(176, 208),
 ]
 
 var restante: float

@@ -74,3 +74,22 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Inicio" type="Label" parent="." unique_id=905804148]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_5ysmq")
+theme_override_font_sizes/font_size = 30
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+text = "MERCADO DOS ENCAPUZADOS
+
+Fique 60 segundos dentro da zona amarela.
+Os ladrões vão tentar te impedir.
+
+Setas ou WASD: andar     Espaço ou J: golpe
+
+Ande, golpeie ou clique para começar"
+horizontal_alignment = 1
+vertical_alignment = 1

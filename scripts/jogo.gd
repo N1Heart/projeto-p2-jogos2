@@ -27,6 +27,7 @@ func _ready() -> void:
 	nascer.timeout.connect(_nascer_ladrao)
 	hud.mostrar_vida(jogador.vida)
 	hud.mostrar_tempo(0, meta)
+	get_tree().paused = true  # espera na tela de inicio; o HUD despausa quando o jogador se mexe
 
 
 func _process(delta: float) -> void:

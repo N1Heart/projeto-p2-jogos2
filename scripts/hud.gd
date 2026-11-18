@@ -1,5 +1,6 @@
 extends CanvasLayer
 # Textos da tela: tempo na zona, vida e a mensagem de fim. Aula 09, feito com ajuda de IA (Claude).
+# Tela de inicio: Aula 13.
 # O HUD continua rodando com o jogo pausado (process_mode = Always), para ouvir o R.
 
 @onready var tempo: Label = $Tempo
@@ -7,6 +8,9 @@ extends CanvasLayer
 @onready var vida: Label = $Vida
 @onready var muda: Label = $Muda
 @onready var mensagem: Label = $Mensagem
+@onready var inicio: Label = $Inicio
+
+signal comecou
 
 
 func mostrar_tempo(segundos: float, meta: float) -> void:
@@ -31,7 +35,24 @@ func mostrar_fim(venceu: bool) -> void:
 	mensagem.visible = true
 
 
+# tela de inicio: o jogo fica pausado ate o jogador se mexer, golpear ou clicar
 func _unhandled_input(evento: InputEvent) -> void:
+	if inicio.visible and _quer_comecar(evento):
+		inicio.visible = false
+		get_tree().paused = false
+		comecou.emit()
+		return
 	if mensagem.visible and evento.is_action_pressed("restart"):
 		get_tree().paused = false
 		get_tree().reload_current_scene()
+
+
+func _quer_comecar(evento: InputEvent) -> bool:
+	if evento is InputEventMouseButton and evento.pressed:
+		return true
+	if evento is InputEventScreenTouch and evento.pressed:
+		return true
+	for acao in ["left", "right", "up", "down", "attack"]:
+		if evento.is_action_pressed(acao):
+			return true
+	return false
