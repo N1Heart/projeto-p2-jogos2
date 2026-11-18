@@ -6,9 +6,9 @@ signal vida_mudou(vida: int)
 signal morreu
 
 @export var velocidade: float = 70.0
-@export var alcance_do_golpe: float = 14.0
-@export var vida_maxima: int = 5
-@export var tempo_invencivel: float = 1.0  # depois de levar dano, fica um tempo sem levar outro
+@export var alcance_do_golpe: float = 16.0
+@export var vida_maxima: int = 30
+@export var tempo_invencivel: float = 1.8  # depois de levar dano, fica um tempo sem levar outro
 
 var vida: int
 var atacando := false

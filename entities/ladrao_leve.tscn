@@ -93,7 +93,7 @@ collision_layer = 4
 collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_2oial")
-velocidade = 50.0
+velocidade = 40.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1632268890]
 z_index = 1

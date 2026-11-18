@@ -21,5 +21,5 @@ Como resolvi: (escreva aqui como resolveu)
 ## Aula 11 -- 04/11 (feita em 10/11)
 
 O que fiz: troquei os retângulos pelos bandidos do pacote Bandits. O leve usa o Light Bandit e o pesado usa o Heavy Bandit, com animações de correr, parado, dor e morte. Como os bandidos são desenhados de lado, eles só viram para a esquerda e para a direita. A horda aperta com o tempo: o intervalo entre um ladrão e outro começa em 3 s e cai até 0,8 s, com até 25 ladrões ao mesmo tempo. Testei com a horda cheia e o jogo não travou.
-O que travou: (escreva aqui o que travou para você)
-Como resolvi: (escreva aqui como resolveu)
+O que travou: o jogo ficou difícil demais e eu não conseguia terminar uma partida.
+Como resolvi: balanceei os números. A invencibilidade depois do dano passou de 1 s para 1,8 s, a área do golpe passou de 20 x 18 para 32 x 30 px, o ladrão leve caiu de 50 para 40 de velocidade e o pesado de 32 para 26. A horda agora começa com um ladrão a cada 4 s, chega no máximo a um a cada 1,6 s e tem no máximo 14 ao mesmo tempo.
